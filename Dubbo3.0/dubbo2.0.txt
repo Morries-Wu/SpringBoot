@@ -1,0 +1,15 @@
+集群负载均衡机制
+基于权重的随机负载均衡机制
+基于权重的轮询负载均衡机制
+最少活跃数负载均衡
+一致性hash-负载均衡机制
+
+
+首先netty服务器启动,启动之后要绑定监听上某一个端口,比如dubbo的20880,所有给20880端口服务器发送的数据netty服务器就能收到
+启动以后会初始化netty服务器的通道,通道初始化好以后就会注册到selector中,selector多路复用器
+selector负责监听一个事件,监听accept事件,accept事件就是说当通道已经准备就绪,准备就绪以后就要来处理通道里面一些信息了
+接下来netty与客户端建立起连接,来生成NIOSocketChannel这就是与客户端连接的通道,然后把NIOSocketChannel再注册到Selector中
+只不过另外的selector来监听read和write事件,相当于通道里面数据读准备就绪和数据写准备就绪,
+
+
+business业务逻辑层Service
