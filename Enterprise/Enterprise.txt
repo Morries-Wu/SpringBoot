@@ -1,0 +1,5 @@
+SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+sdf.format(auction.getAuctionStarttime())   2021-9-3 13:33:33
+
+jsp
+<fmt:formatDate value="${auction.auctionstarttime}" pattern="yyyy-MM-dd"

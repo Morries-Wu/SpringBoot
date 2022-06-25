@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="enterprise.Mapper.AuctionCustomerMapper" >
+  <resultMap id="AuctionRecordMap" type="enterprise.Bean.Auction" >
+    <id column="auctionId" property="auctionid" jdbcType="INTEGER" />
+    <result column="auctionName" property="auctionname" jdbcType="VARCHAR" />
+    <result column="auctionStartPrice" property="auctionstartprice" jdbcType="DECIMAL" />
+    <result column="auctionUpset" property="auctionupset" jdbcType="DECIMAL" />
+    <result column="auctionStartTime" property="auctionstarttime" jdbcType="TIMESTAMP" />
+    <result column="auctionEndTime" property="auctionendtime" jdbcType="TIMESTAMP" />
+    <result column="auctionPic" property="auctionpic" jdbcType="VARCHAR" />
+    <result column="auctionPicType" property="auctionpictype" jdbcType="VARCHAR" />
+    <result column="auctionDesc" property="auctiondesc" jdbcType="VARCHAR" />
+
+    <!--一个竞拍品对应多个拍卖记录-->
+    <collection property="auctionrecodList" ofType="enterprise.Bean.Auctionrecord">
+      <id column="id" property="id" jdbcType="INTEGER" />
+      <result column="record_user_id" property="userid" jdbcType="INTEGER" />
+      <result column="record_auction_id" property="auctionid" jdbcType="INTEGER" />
+      <result column="auctionTime" property="auctiontime" jdbcType="TIMESTAMP" />
+      <result column="auctionPrice" property="auctionprice" jdbcType="DECIMAL" />
+
+      <!--一个竞拍记录对应一个竞拍人-->
+      <association property="user" javaType="enterprise.Bean.User">
+        <result column="userName" property="username"/>
+      </association>
+    </collection>
+
+  </resultMap>
+
+  <select id="selectAuctionAndRecordList" resultMap="AuctionRecordMap">
+    SELECT auction.*,auctionrecord.auctionId 'record_auction_id',
+    auctionrecord.auctionPrice,
+    auctionrecord.auctionTime,
+    auctionrecord.id 'record_id',
+    auctionrecord.userId 'record_user_id',
+    user.userName
+    FROM auction
+        LEFT JOIN auctionrecord ON auctionrecord.auctionId=auction.auctionId
+        LEFT JOIN USER ON user.userId=auctionrecord.userId
+    WHERE auction.auctionId=#{auctionId}
+    ORDER BY auctionrecord.auctionPrice DESC
+  </select>
+
+
+
+</mapper>
