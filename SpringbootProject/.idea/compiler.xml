@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="013-Springboot-Charater-properties" />
+        <module name="009-Springboot-interceptor" />
+        <module name="001-Springboot-pre" />
+        <module name="014-Springboot-mapper" />
+        <module name="Dubbo3.0" />
+        <module name="010-Springboot-servlet" />
+        <module name="017-Springboot-redis" />
+        <module name="daada" />
+        <module name="007-Springboot-container" />
+        <module name="018-Springboot-Thymeleaf" />
+        <module name="011-Springboot-filter" />
+        <module name="015-Springboot-transactional" />
+        <module name="012-Springboot-character-filter" />
+        <module name="005-Springboot-custom" />
+        <module name="004-Springboot-multi-environment" />
+        <module name="016-Springboot-restful" />
+        <module name="008-Springboot-commandlinerunner" />
+        <module name="002-Springboot-first" />
+        <module name="003-Springboot-mvc" />
+        <module name="006-Springboot-jsp" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="001-Springboot-pre" target="1.8" />
+      <module name="002-Springboot-first" target="1.8" />
+      <module name="003-Springboot-mvc" target="1.8" />
+      <module name="004-Springboot-multi-environment" target="1.8" />
+      <module name="005-Springboot-custom" target="1.8" />
+      <module name="006-Springboot-jsp" target="1.8" />
+      <module name="007-Springboot-container" target="1.8" />
+      <module name="008-Springboot-commandlinerunner" target="1.8" />
+      <module name="009-Springboot-interceptor" target="1.8" />
+      <module name="010-Springboot-servlet" target="1.8" />
+      <module name="011-Springboot-filter" target="1.8" />
+      <module name="012-Springboot-character-filter" target="1.8" />
+      <module name="013-Springboot-Charater-properties" target="1.8" />
+      <module name="014-Springboot-mapper" target="1.8" />
+      <module name="015-Springboot-transactional" target="1.8" />
+      <module name="016-Springboot-restful" target="1.8" />
+      <module name="017-Springboot-redis" target="1.8" />
+      <module name="018-Springboot-Thymeleaf" target="1.8" />
+      <module name="CarReS" target="8" />
+      <module name="daada" target="1.8" />
+      <module name="Dubbo3.0" target="1.8" />
+      <module name="Redis" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="002-Springboot-first" options="-parameters" />
+      <module name="003-Springboot-mvc" options="-parameters" />
+      <module name="004-Springboot-multi-environment" options="-parameters" />
+      <module name="005-Springboot-custom" options="-parameters" />
+      <module name="006-Springboot-jsp" options="-parameters" />
+      <module name="007-Springboot-container" options="-parameters" />
+      <module name="008-Springboot-commandlinerunner" options="-parameters" />
+      <module name="009-Springboot-interceptor" options="-parameters" />
+      <module name="010-Springboot-servlet" options="-parameters" />
+      <module name="011-Springboot-filter" options="-parameters" />
+      <module name="012-Springboot-character-filter" options="-parameters" />
+      <module name="013-Springboot-Charater-properties" options="-parameters" />
+      <module name="014-Springboot-mapper" options="-parameters" />
+      <module name="015-Springboot-transactional" options="-parameters" />
+      <module name="016-Springboot-restful" options="-parameters" />
+      <module name="017-Springboot-redis" options="-parameters" />
+      <module name="018-Springboot-Thymeleaf" options="-parameters" />
+      <module name="Dubbo3.0" options="-parameters" />
+      <module name="Redis" options="-parameters" />
+      <module name="daada" options="-parameters" />
+    </option>
+  </component>
+</project>

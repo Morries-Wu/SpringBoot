@@ -1,0 +1,540 @@
+第一章
+JavaConfig:使用Java类作为xml配置文件的替代,是配置spring容器的纯Java的方式
+在这个类这可以创建Java对象,把对象放入spring容器中(注入到容器)
+
+使用两个注解:
+1、@Configuration:放在一个类的上面,表示这个类是作为配置文件使用的
+2、@Bean:声明对象,把对象注入到容器中
+@Configuration
+@ComponentScan(basePackages = "Com.Vo")
+public class SpringConfig {
+    @Bean
+    public Student createStudent() {
+        Student s1 = new Student();
+        s1.setName("张三");
+        s1.setAge(26);
+        s1.setSex("男");
+        return s1;
+    }
+}
+
+@ImportResource是导入xml配置,等同于xml文件的resources
+<import resources="其他文件"/>
+
+@Configuration
+@ImportResource(value = {"classpath:applicationContext.xml","classpath:beans.xml"})
+public class SpringConfig {
+}
+
+
+@PropertyResource
+@PropertyResource是读取properties属性配置文件
+1、在resource目录下创建config.properties文件,使用k=V的格式提供数据
+2、PropertyResource指定properties文件的位置
+3、使用@Value(value="${key}")
+
+@Configuration
+@ImportResource(value = {"classpath:applicationContext.xml","classpath:beans.xml"})
+@PropertySource(value = "classpath:config.properties",encoding = "UTF-8"){
+}
+
+@Component("tiger")
+public class Tiger {
+    @Value("${tiger.name}")
+    private String name;
+    @Value("${tiger.age}")
+    private Integer age;
+
+}
+
+第二章
+spring boot是spring中的一个成员,可以简化spring,springmvc的使用,它的核心还是IOC容器
+特点:
+1、创建spring应用
+2、内嵌的tomcat,jetty,Undertow
+3、提供了starter起步依赖,简化应用的配置
+   比如使用mybatis框架,需要在spring项目中,配置Mybatis的对象SqlSessionFactory,Dao的代理对象
+   在springboot在项目中,在pom.xml里面,加入一个mybatis-spring-boot-starter依赖
+4、尽可能去配置spring和第三方库,叫做自动配置(就是把spring中的,第三方库中的对象都创建好,放到容器中,开发人员可以直接使用)
+5、提供了健康检查、统计、外部化配置
+6、不用生成代码,不用使用xml,做配置
+
+创建spring boot项目
+第一种方式:https://start.spring.io
+使用spring boot提供的初始化器,向导的方式,完成springboot项目的创建,使用方便
+项目结构
+static:存放静态资源,如图片、CSS、JavaScript 等
+templates:存放 Web 页面的模板文件
+application.properties/application.yml 用于存放程序的各种依赖模块的配置信息,比如:服务端口,数据库连接配置等
+
+使用国内地址
+https://start.springboot.io
+
+@SpringBootApplication
+复合注解
+@SpringBootConfiguration
+@EnableAutoConfiguration
+@ComponentScan
+
+1、@SpringBootConfiguration
+public @interface SpringBootConfiguration {
+    @AliasFor(
+        annotation = Configuration.class
+    )
+    boolean proxyBeanMethods() default true;
+}
+说明:使用了@SpringBootConfiguration注解标注的类,可以作为配置文件使用的
+    可以使用Bean声明对象,注入到容器
+
+2、@EnableAutoConfiguration
+启用自动配置,把Java对象配置好,注入到spring容器中.例如可以把mybatis的对象创建好,放入到容器中
+
+3、@ComponentScan
+扫描器,找到注解,根据注解的功能创建对象,给属性赋值等等
+默认扫描的包,@ComponentScan所在的类所在的包和子包
+
+Springboot的配置文件
+配置文件名称:application(默认使用,不可改文件名)
+扩展名:properties(K=V)、yml(K: V)
+使用application.properties,application.yml
+
+多环境配置
+有开发环境,测试环境,上线的环境
+每个环境有不同的配置信息,例如端口,上下文件,数据库url,用户名,密码等等
+
+使用多环境配置文件,可以方便的切换不同的配置
+使用方式:创建多个配置文件,名称规则:application-环境名称.properties(yml)
+创建开发环境的配置文件:application-dev.properties(application-dev.yml)
+创建测试者使用的配置:application-test.properties
+
+使用jsp
+spring boot不推荐使用jsp,而是使用模板技术代替jsp
+使用jsp需要配置:
+1、加入一个处理jsp的依赖,负责编译jsp文件
+<dependency>
+    <groupId>org.apache.tomcat.embed</groupId>
+    <artifactId>tomcat-embed-jasper</artifactId>
+</dependency>
+
+2、
+如果需要使用servlert,jsp,jstl的功能
+<dependency>
+    <groupId>javax.servlet</groupId>
+    <artifactId>jstl</artifactId>
+</dependency>
+
+<dependency>
+    <groupId>javax.servlet</groupId>
+    <artifactId>javax.servlet-api</artifactId>
+    <version>3.1.0</version>
+    <scope>provided</scope>
+</dependency>
+
+<dependency>
+    <groupId>javax.servlet.jsp</groupId>
+    <artifactId>jsp-api</artifactId>
+    <version>2.2.1-b03</version>
+    <scope>provided</scope>
+</dependency>
+
+3、创建一个存放jsp的目录,一般叫做webapp
+index.jsp
+
+4、需要在pom.xml指定jsp文件编译后的存放目录
+META-INF/resources
+<!--指定jsp编译后的存放目录-->
+<resources>
+    <resource>
+        <!--jsp原来的目录-->
+        <directory>src/main/webapp</directory>
+        <!--指定编译后的存放目录-->
+        <targetPath>META-INF/resources</targetPath>
+        <!--指定处理的目录和文件-->
+        <includes>
+            <include>**/*.*</include>
+        </includes>
+    </resource>
+</resources>
+
+
+5、创建Controller,访问jsp
+
+6、在application.properties文件中配置试图解析器
+#配置视图解析器
+#/ =src/main/webapp
+spring.mvc.view.prefix=/
+spring.mvc.view.suffix=.jsp
+
+使用容器
+你想通过代码,从容器中获取对象
+通过SpringApplication.run(Application.class.args);返回值
+public static ConfigurableApplicationContext run(Class<?> primarySource, String... args) {
+    return run(new Class[]{primarySource}, args);
+}
+ConfigurableApplicationContext:接口,是applicationContext的子接口
+public interface ConfigurableApplicationContext extends ApplicationContext
+
+
+CommandLineRunner接口,ApplicationRunner接口
+这两个接口都有一个run方法,执行时间在容器对象创建好后,自动执行run()方法
+可以完成自定义的在容器对象创建好的一些操作
+
+@FunctionalInterface
+public interface ApplicationRunner {
+    void run(ApplicationArguments args) throws Exception;
+}
+
+@FunctionalInterface
+public interface CommandLineRunner {
+    void run(String... args) throws Exception;
+}
+
+第三章Web组件
+拦截器
+拦截器是springMVC中一种对象,能拦截对Controller的请求
+拦截器框架中有系统的拦截器,还可以自定义拦截器.实现对请求预先处理
+实现自定义拦截器:
+1、创建类实现springmvc框架的HandlerInterceptor接口
+public interface HandlerInterceptor {
+    default boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+        return true;
+    }
+
+    default void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, @Nullable ModelAndView modelAndView) throws Exception {
+    }
+
+    default void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, @Nullable Exception ex) throws Exception {
+    }
+}
+2、需在SpringMVC的配置文件中,声明拦截器
+<mvc:interceptors>
+    <mvc:interceptor>
+        <mvc:path="url"/>
+        <bean class="拦截器全限定名称"/>
+    </mvc:interceptor>
+</mvc:interceptors>
+
+Springboot中注册拦截器
+@Configuration
+public class MyAppConfig implements WebMvcConfigurer {
+    添加拦截器对象,注入到容器中
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        创建拦截器对象
+        HandlerInterceptor interceptor = new LoginInterceptor();
+        指定拦截的请求uri地址
+        String path[] = {"/user/**"};
+        指定不拦截的地址
+        String excludePath[] = {"/user/login"};
+        registry.addInterceptor(interceptor).addPathPatterns(path).excludePathPatterns(excludePath);
+    }
+}
+
+Servlet
+在spring boot框架中使用servlet对象
+1、创建servlet类,创建类继承HttpServlet
+@Controller
+public class MyServlet extends HttpServlet {
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //使用HttpServletResponse输出数据,应答结果
+        resp.setContentType("text/html;charset=utf-8");
+        PrintWriter out = resp.getWriter();
+        out.println("执行的是servlet");
+        out.flush();
+        out.close();
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doPost(req, resp);
+    }
+}
+
+2、注册servlet,让框架能找到Servlet
+@Configuration
+public class WebApplicationConfig {
+    //定义方法,注册Servlet对象
+    @Bean
+    public ServletRegistrationBean servletRegistrationBean() {
+        /**
+         * public ServletRegistrationBean(T servlet, String... urlMappings)
+         * 第一个参数是servlet对象,第二个是url地址
+         * ServletRegistrationBean bean = new ServletRegistrationBean(new MyServlet(), "/myservlet");
+         */
+
+        ServletRegistrationBean bean = new ServletRegistrationBean();
+        bean.setServlet(new MyServlet());
+        bean.addUrlMappings("/myservlet", "/login");
+        return bean;
+    }
+}
+
+过滤器Filter
+Filters是servlet规范中的过滤器,可以处理请求,对请求的参数,属性进行调整,常常在过滤器中处理字符编码
+在框架中使用过滤器
+1、创建自定义过滤器类
+public class MyFilter implements Filter {
+
+    @Override
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+        System.out.println("执行了MyFilter,doFilter");
+        filterChain.doFilter(servletRequest, servletResponse);
+    }
+}
+
+2、注册Filter过滤器对象
+@Configuration
+public class WebAppcationConfig {
+    @Bean
+    public FilterRegistrationBean filterRegistrationBean() {
+        FilterRegistrationBean bean = new FilterRegistrationBean();
+        bean.setFilter(new MyFilter());
+        bean.addUrlPatterns("/user/*");
+        return bean;
+    }
+}
+
+字符集过滤器
+CharsetEncodingFilter:解决post请求中乱码的问题
+在SpringMVC框架,在web.xml注册过滤器,配置他的属性
+使用步骤
+1、配置字符集过滤器
+第一种方式:
+@Configuration
+public class WebSystemConfig {
+    //注册Servlet
+    @Bean
+    public ServletRegistrationBean servletRegistrationBean() {
+        MyServlet myServlet = new MyServlet();
+        ServletRegistrationBean bean = new ServletRegistrationBean(myServlet, "/myservlet");
+        return bean;
+    }
+
+    @Bean
+    public FilterRegistrationBean filterRegistrationBean() {
+        FilterRegistrationBean bean = new FilterRegistrationBean();
+        //使用框架中的过滤器类
+        CharacterEncodingFilter filter = new CharacterEncodingFilter();
+        //指定使用的编码方式
+        filter.setEncoding("utf-8");
+        //指定request,response都使用encoding的值
+        filter.setForceEncoding(true);
+        bean.setFilter(filter);
+        //指定过滤的url地址
+        bean.addUrlPatterns("/*");
+        return bean;
+    }
+}
+
+2、修改application.properties文件,让自定义的过滤器起作用
+#spring boot中默认已经配置了CharacterEncodingFilter,编码默认ISO-8859-1
+#设置enabled=false 作用是关闭系统中配置好的过滤器,使用自定义的CharacterEncodingFilter
+server.servlet.encoding.enabled=false
+
+第二种方式
+修改application.properties文件
+server.port=9001
+server.servlet.context-path=/myboot
+#让系统的CharacterEncodingFilter生效
+server.servlet.encoding.enabled=true
+#指定使用的编码方式
+server.servlet.encoding.charset=utf-8
+#强制request,response都使用charset属性值
+server.servlet.encoding.force=true
+
+ORM操作MySQL
+使用mybatis框架操作数据,在springboot框架中继承mybatis
+使用步骤
+1、mybatis起步依赖:完成mybatis对象自动配置,对象放在容器中
+2、pom.xml指定把src/main/java目录中的xml文件包含到classpath中
+3、创建实体类Student
+4、创建Dao接口StudentDao,创建查询学生的方法
+5、创建Dao接口对应的Mapper文件,xml文件,写sql语句
+6、创建Service层对象,创建StudentService接口和它的实现类
+7、创建Controller对象,访问Service
+8、写application.properties文件
+   配置数据库的连接信息
+
+第一种方式:@Mapper
+@Mapper:放在dao接口的上面,每个接口都需要使用这个注解
+/**
+ * 告诉mybatis这是dao接口,创建此接口的代理对象
+ * 位置:在类的上面
+ */
+@Mapper
+public interface StudentDao {
+    Student selectById(@Param("stuId") Integer id);
+}
+
+第二种方式:@MapperScan
+/**
+ * @MapperScan:找到Dao接口和Mapper文件
+ * basePackges:Dao接口所在包名
+ */
+@SpringBootApplication
+@MapperScan(basePackages = "springbootmapper.dao")
+public class SpringbootMapperApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(SpringbootMapperApplication.class, args);
+    }
+
+}
+
+第三种方式:Mapper文件和Dao接口分开管理
+1、在resources目录中创建子目录(自定义的),例如mapper
+2、把mapper文件放到mapper目录中
+3、在application.properties文件中,指定mapper文件的目录
+4、在pom.xml中指定把resources目录中的文件,编译到目标目录中
+<!--resources插件-->
+<resources>
+    <resource>
+        <directory>src/main/resources</directory>
+        <includes>
+            <include>**/*.*</include>
+        </includes>
+    </resource>
+</resources>
+
+springboot框架中的事务
+1、管理事务的对象:事务管理器(接口,接口有很多的实现类)
+   例如:使用jdbc或者mybatis访问数据库,使用事务管理器:DataSourceTransactionManager
+2、声明式事务:在xml配置文件或者使用注解说明事务控制的内容
+   控制事务:隔离级别,传播行为,超时时间
+3、事务处理方式:
+   1、spring框架中的@Transactional
+   2、aspectj框架可以在xml配置文件中,声明事务控制的内容
+
+springboot中使用事务:上面的两种方式都可以
+1、在业务方法的上面加入@Transactional,加入注解后,方法就有事务功能了
+2、明确的在主启动类的上面,加入@EnableTransactionManger
+
+事务的使用
+/**
+ * @Transactional:表示方法的有事务支持
+ *           默认:使用库的隔离级别,REQUIRED 传播行为;超时时间 -1
+ *           抛出运行时异常,回滚事务
+ */
+@Override
+@Transactional
+public int addStudent(Student student) {
+    System.out.println("业务方法addStudent");
+    int rows = studentMapper.insert(student);
+    System.out.println("执行了sql语句");
+    //抛出一个运行时异常,目的是回滚事务
+    return rows;
+}
+
+接口架构风格-RESTful
+接口:API(Application Programming Interface,应用程序接口)是一些预先定义的接口(如函数、HTTP接口)
+或指软件系统不同组成部分衔接的约定
+接口(API):可以指访问servlet,controller的url,调用其他程序的函数
+架构风格:api组织方式(样子)
+传统风格:http://localhost:9002/mytrasaction/addStudent?name=lisi&age=18
+在地址上提供了访问的资源名称addStudent,在其后使用了get方式传递参数
+
+REST:Representational State Transfer,表现层状态转移
+     是一种接口的架构风格和设计理念,不是标准
+
+表现层状态转移:表现层就是视图层,显示资源的,jsp等等显示操作资源的结果
+状态:资源的变化
+转移:资源是可以变化的,资源能创建,new状态,资源创建后可以查阅资源,能看到资源的内容
+这个资源内容,可以被修改,修改后资源和之前的不一样
+
+
+REST中的要素:
+用REST表示资源和对资源的操作,在互联网中,表示一个资源或者一个操作
+资源使用url表示的,在互联网,使用的图片,视频,文本,网页等等都是资源
+资源是用名词表示
+
+对资源:
+查看资源:看,通过url找到资源
+创建资源:添加资源
+更新资源:编辑
+删除资源:去除
+
+资源使用url表示,通过名词表示资源
+在url中,使用名词表示资源,以及访问资源的信息,在url中,使用"/"分隔对资源的信息
+http://localhots:8080/myboot/student/1001
+使用http中的动作(请求方式),表示对资源的操作(CURD)
+GET:查询资源--sql select
+    处理单个资源,用它的单数方式
+    http://localhots:8080/myboot/student/1001
+    处理多个资源,使用复数形式
+    http://localhots:8080/myboot/student/1001/1002
+POST:创建资源--sql insert
+    http://localhots:8080/myboot/student
+    在post请求中传递参数
+    <form action="http://localhots:8080/myboot/student" method="post">
+        姓名:<input type="text" name="name">
+        年龄:<input type="text" name="age">
+    </form>
+
+PUT:更新资源--sql update
+    <form action="http://localhots:8080/myboot/student/1" method="post">
+            姓名:<input type="text" name="name"/>
+            年龄:<input type="text" name="age"/>
+                <input type="hidden name="_method" value="PUT"/>
+    </form>
+DELETE:删除资源--sql delete
+    <a href="http://localhost:8080/myboot/student/1">
+        删除1的数据
+    </a>
+
+
+需要的分页,排序等参数,依然放在url的后面,例如
+http://localhost:8080/myboot/students?page=pageSize=20
+
+一句话说明REST
+使用url表示资源,使用HTTP动作操作资源
+
+注解
+@PathVariable:从url中获取数据
+@GetMapping:支持get请求方式,等同于@RequestMapping(method=RequestMethod.GET)
+@PostMapping:支持post请求方式,等同于@RequestMapping(method=RequestMehod.POST)
+@PutMapping:支持put请求方式,等同于@RequestMapping(method=RequestMehod.PUT)
+@DeleteMapping:支持delete请求方式,等同于@RequestMapping(method=RequestMehod.DELETE)
+@RestController:复合注解,是@Controller和@ResponseBody组合
+                在类的上面使用@RestController,表示当前类的所有方法都加入了@ResponseBody
+
+在页面中或者ajax中,支持put,delete请求
+在springMVC中有一个过滤器,支持post请求转为put,delete
+过滤器:org.springframework.web.filter.HiddenHttpMethodFilter
+作用:把请求的post请求,转为put、delete
+
+实现步骤:
+1、application.properties:开启使用HidenHttpMethodFiter过滤器
+2、在请求页面中,包含_method参数,他的值是put,delete,发起这个请求使用的post方式
+
+redis
+Spring,SpringBoot中有一个RedisTemplate(StringRedisTemplate)处理和redis交互
+
+RedisTemplate使用的lettuce客户端库
+<!-- redis起步依赖:直接在项目中使用RedisTemplate(StringRedisTemplate) -->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-data-redis</artifactId>
+</dependency>
+data-redis使用的   lettuce 客户端
+在程序中使用RedisTemplate类的方法,操作redis数据,实际就是调用的lettuce客户端中的方法
+
+对比StringRedisTemplate和RedisTemplate
+StringRedisTemplate:把key,value都是作为String处理,使用的是String的序列化,可读性好
+RedisTemplate:把key,value经过序列化存到redis.key,value序列化的内容,不能直接识别,
+              默认使用的jdk序列化,可以修改为其他的序列化
+序列化:把对象转化为可传输的字节序列过程称为序列化,序列化目的是为了对象可以跨平台存储
+      和进行网络传输
+
+设置key或者value的序列化方式
+/*使用RedisTemplate,在存取值之前进行序列化,设置key使用String的序列化*/
+redisTemplate.setKeySerializer(new StringRedisSerializer());
+
+/*设置 value 的序列化*/
+redisTemplate.setValueSerializer(new StringRedisSerializer());
+redisTemplate.opsForValue().set(key, value);
+return "定义RedisTemplate对象的key,value的序列化";
+
+Springboot集成Dubbo
+https://github.com/apache/dubbo-spring-boot-project
+

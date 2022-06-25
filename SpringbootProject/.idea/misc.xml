@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/001-Springboot-pre/pom.xml" />
+        <option value="$PROJECT_DIR$/002-Springboot-first/pom.xml" />
+        <option value="$PROJECT_DIR$/003-Springboot-mvc/pom.xml" />
+        <option value="$PROJECT_DIR$/004-Springboot-multi-environment/pom.xml" />
+        <option value="$PROJECT_DIR$/005-Springboot-custom/pom.xml" />
+        <option value="$PROJECT_DIR$/006-Springboot-jsp/pom.xml" />
+        <option value="$PROJECT_DIR$/007-Springboot-container/pom.xml" />
+        <option value="$PROJECT_DIR$/008-Springboot-commandlinerunner/pom.xml" />
+        <option value="$PROJECT_DIR$/009-Springboot-interceptor/pom.xml" />
+        <option value="$PROJECT_DIR$/010-Springboot-servlet/pom.xml" />
+        <option value="$PROJECT_DIR$/011-Springboot-filter/pom.xml" />
+        <option value="$PROJECT_DIR$/012-Springboot-character-filter/pom.xml" />
+        <option value="$PROJECT_DIR$/013-Springboot-Charater-properties/pom.xml" />
+        <option value="$PROJECT_DIR$/014-Springboot-mapper/pom.xml" />
+        <option value="$PROJECT_DIR$/015-Springboot-transactional/pom.xml" />
+        <option value="$PROJECT_DIR$/016-Springboot-restful/pom.xml" />
+        <option value="$PROJECT_DIR$/Springboot-redis/pom.xml" />
+        <option value="$PROJECT_DIR$/017-Springboot-redis/pom.xml" />
+        <option value="$PROJECT_DIR$/Dubbo3.0/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_16" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
+</project>

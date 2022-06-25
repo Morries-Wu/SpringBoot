@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="665a9098-7d4f-4436-a6d1-a36af7f7c2a4" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Jsp File" />
+        <option value="mybatis-mapper" />
+        <option value="Interface" />
+        <option value="Class" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="F:\Multifunctionapplication\Advanced Files\apache-maven-3.8.2\maven-repo" />
+        <option name="mavenHome" value="$PROJECT_DIR$/../../../apache-maven-3.8.2" />
+        <option name="userSettingsFile" value="F:\Multifunctionapplication\Advanced Files\apache-maven-3.8.2\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="MavenRunner">
+    <option name="jreName" value="#JAVA_HOME" />
+    <option name="vmOptions" value="-DarchetypeCatalog=internal" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedIndex" value="1" />
+  </component>
+  <component name="ProjectId" id="26xWN3ejsBEcBcED4AGwECEEI6H" />
+  <component name="ProjectViewState">
+    <option name="autoscrollToSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="false" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="ExpandSpringBootJavaOptionsPanel" value="true" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="jdk.selected.JAVA_MODULE" value="1.8" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Dubbo3.0" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.23930636" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="springboottransactional.service.imp" />
+      <recent name="springbootmapper.service.imp" />
+      <recent name="springbootcommandlinerunner.service.imp" />
+      <recent name="springbootcontainer.service.imp" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\Multifunctionapplication\Advanced Files\IntelliJ IDEA Project\Spring boot\SpringbootProject" />
+      <recent name="F:\Multifunctionapplication\Advanced Files\IntelliJ IDEA Project\Spring boot\SpringbootProjec\CarReS\src\main\java" />
+      <recent name="F:\Multifunctionapplication\Advanced Files\IntelliJ IDEA Project\Spring boot\SpringbootProject\Springboot-restful\src\main\resources\static" />
+      <recent name="F:\Multifunctionapplication\Advanced Files\IntelliJ IDEA Project\Spring boot\SpringbootProject\Springboot-transactional" />
+      <recent name="F:\Multifunctionapplication\Advanced Files\IntelliJ IDEA Project\Spring boot\SpringbootProject\Seckill\src\main\java" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\Multifunctionapplication\Advanced Files\IntelliJ IDEA Project\Spring boot\SpringbootProject\Springboot-mapper\src\main\resources\mapper" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.example.springbootredis" />
+      <recent name="" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="springbootcharaterproperties.config" />
+      <recent name="springbootcharaterproperties.web" />
+      <recent name="Com" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.SpringbootContainerApplication">
+    <configuration name="MyThymeleafApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="018-Springboot-Thymeleaf" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.springbootThymeleaf.MyThymeleafApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringbootContainerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="007-Springboot-container" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="springbootcontainer.SpringbootContainerApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpringBeansView">
+    <option name="beanDetailsProportion" value="0.3" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="665a9098-7d4f-4436-a6d1-a36af7f7c2a4" name="Default Changelist" comment="" />
+      <created>1648365675094</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1648365675094</updated>
+      <workItem from="1648365676395" duration="219000" />
+      <workItem from="1648366188344" duration="2279000" />
+      <workItem from="1648369808273" duration="51000" />
+      <workItem from="1648369876022" duration="2258000" />
+      <workItem from="1648387433347" duration="344000" />
+      <workItem from="1649502392288" duration="90000" />
+      <workItem from="1650870836053" duration="3360000" />
+      <workItem from="1650874231704" duration="13752000" />
+      <workItem from="1650940523732" duration="154000" />
+      <workItem from="1650940684416" duration="1842000" />
+      <workItem from="1650960677228" duration="44000" />
+      <workItem from="1650960753220" duration="16306000" />
+      <workItem from="1651050187159" duration="201000" />
+      <workItem from="1651050395688" duration="292000" />
+      <workItem from="1651050695777" duration="1555000" />
+      <workItem from="1651055901382" duration="5150000" />
+      <workItem from="1651108625478" duration="1027000" />
+      <workItem from="1651109680445" duration="9702000" />
+      <workItem from="1651191901176" duration="50385000" />
+      <workItem from="1651459077683" duration="28000" />
+      <workItem from="1651459144082" duration="36201000" />
+      <workItem from="1651740962589" duration="1478000" />
+      <workItem from="1651795837432" duration="434000" />
+      <workItem from="1651831925819" duration="1213000" />
+      <workItem from="1652178220740" duration="1880000" />
+      <workItem from="1652255930395" duration="902000" />
+      <workItem from="1652265902543" duration="822000" />
+      <workItem from="1653983806530" duration="3543000" />
+      <workItem from="1653988230912" duration="1354000" />
+      <workItem from="1653989603672" duration="9962000" />
+      <workItem from="1654132523631" duration="9371000" />
+      <workItem from="1654392383644" duration="362000" />
+      <workItem from="1654392773820" duration="28155000" />
+      <workItem from="1654572791704" duration="895000" />
+      <workItem from="1654758651600" duration="5327000" />
+      <workItem from="1654765699116" duration="162000" />
+      <workItem from="1654765891528" duration="11036000" />
+      <workItem from="1655201802091" duration="576000" />
+      <workItem from="1655205593675" duration="1239000" />
+      <workItem from="1655288873799" duration="2006000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
